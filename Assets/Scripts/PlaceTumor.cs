@@ -4,9 +4,18 @@ using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
+/*
+ General class to place 3D objects, in this case, a tumor asset.
+ For future development, we might want to revisit this code so that 
+ we can place different objects depending on the game progress/status.
+
+ In addition, we also include the shoot behavior so the scrip is set
+ to active once our tumor is placed in the AR enviroment.
+ */
+
 public class PlaceTumor : MonoBehaviour
 {
-
+    //Class attributes
     public GameObject arObjectToSpawn;
     public GameObject placementIndicator;
     private GameObject spawnedObject;
@@ -15,19 +24,21 @@ public class PlaceTumor : MonoBehaviour
     private ARRaycastManager aRRaycastManager;
     private bool placementPoseIsValid = false;
 
-
+    //Begin session and find flat surfaces, make sure shooting behavior is off.
     void Start()
     {
         aRRaycastManager = FindObjectOfType<ARRaycastManager>();
         shoot.SetActive(false);
     }
 
-    // need to update placement indicator, placement pose and spawn 
+    //Checks if objects has already been placed. If it hasn't place new object by calling ARPlaceObject.
+    //Otherwise, update object placement according to where the user clicked.
+    //need to update placement indicator, placement pose and spawn 
     void Update()
     {
         if (spawnedObject == null && placementPoseIsValid && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
-            ARPlaceObject(); // at the moment this just spawns the gameobject
+            ARPlaceObject(); //at the moment this just spawns the gameobject
             shoot.SetActive(true);
         }
 
@@ -36,6 +47,9 @@ public class PlaceTumor : MonoBehaviour
 
 
     }
+
+    //Checks if object has been placed. If hasn't, set behavior active and update position.
+    //If it has, set behavior off.
     void UpdatePlacementIndicator()
     {
         if (spawnedObject == null && placementPoseIsValid)
@@ -49,6 +63,7 @@ public class PlaceTumor : MonoBehaviour
         }
     }
 
+    //Keeps placement indicator at the center of the screen at all times, unless person taps a specific location.
     void UpdatePlacementPose()
     {
         var screenCenter = Camera.current.ViewportToScreenPoint(new Vector3(0.5f, 0.5f));
@@ -62,6 +77,7 @@ public class PlaceTumor : MonoBehaviour
         }
     }
 
+    //Spawns object.
     void ARPlaceObject()
     {
         spawnedObject = Instantiate(arObjectToSpawn, PlacementPose.position, PlacementPose.rotation);
