@@ -8,6 +8,11 @@ public class MainMenuController : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
+    public void LoadPhase0()
+    {
+        SceneManager.LoadScene("ARSetUp");
+    }
+
     public void LoadPhase1()
     {
         SceneManager.LoadScene("AR_FerrofluidGame_Phase1");
