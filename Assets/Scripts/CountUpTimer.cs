@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class CountUpTimer : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI timerText;
+    public TextMeshProUGUI timerText;
     private float elapsedTimeinSeconds;
 
     void Start()
     {
         elapsedTimeinSeconds = 0f;
-        
     }
 
     // Update is called once per frame
@@ -19,6 +18,11 @@ public class CountUpTimer : MonoBehaviour
         elapsedTimeinSeconds += Time.deltaTime;
         DisplayTime(elapsedTimeinSeconds);
         
+    }
+
+    public float GetElapsedTime()
+    {
+        return elapsedTimeinSeconds;
     }
 
     private void DisplayTime(float timeToDisplay)

@@ -2,7 +2,7 @@
     "name": "TouchActions",
     "maps": [
         {
-            "name": "Touch",
+            "name": "PlayerControls",
             "id": "2a300ca2-d981-4bc8-9c3f-771e35033292",
             "actions": [
                 {
@@ -28,7 +28,7 @@
                 {
                     "name": "",
                     "id": "67d19b0f-e06c-49ed-a35a-47592692bb3c",
-                    "path": "<Touchscreen>/Press",
+                    "path": "<Touchscreen>/primaryTouch/tap",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
