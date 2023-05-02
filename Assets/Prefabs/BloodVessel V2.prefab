@@ -32985,7 +32985,7 @@ MonoBehaviour:
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
-  m_SelectedVertices: fb060000
+  m_SelectedVertices: 
 --- !u!114 &3922909637618563470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32998,6 +32998,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 239ace7cf9436994a869bc3c5b387e60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  veins: {fileID: 0}
   objectToPlace: {fileID: 919132149155446097, guid: 8e6e73888d8ecae4d87fa841df00decf,
     type: 3}
-  maxAttempts: 10
